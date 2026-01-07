@@ -7,6 +7,11 @@ cask "headsetcontrol-macostray" do
   desc "Tray utility for controlling headsets over sapd headsetcontrol binary"
   homepage "https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray"
 
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   depends_on macos: ">= :sonoma"
   depends_on formula: "sapd/headsetcontrol/headsetcontrol"
 
