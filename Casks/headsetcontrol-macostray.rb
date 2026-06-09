@@ -12,14 +12,13 @@ cask "headsetcontrol-macostray" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
   depends_on formula: "chrislauinger77/cask/headsetcontrol-latest"
 
   app "HeadsetControl-MacOSTray.app"
-  
+
   caveats <<~EOS
     #{token} is not signed. You may need to allow it in System Settings > Privacy & Security
     or by right-clicking the app in Finder and choosing 'Open'.
   EOS
-
 end
