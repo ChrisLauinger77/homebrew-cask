@@ -11,8 +11,9 @@ cask "toerings" do
     url :url
     strategy :github_latest
   end
-  
+
   depends_on :macos
+
   app "ToeRings.app"
 
   caveats <<~EOS
