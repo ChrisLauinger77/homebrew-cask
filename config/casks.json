@@ -1,0 +1,14 @@
+[
+  {
+    "cask": "headsetcontrol-macostray",
+    "repository": "ChrisLauinger77/HeadsetControl-MacOSTray",
+    "asset_pattern": "^HeadsetControl-MacOSTray\\.zip$",
+    "cask_file": "Casks/headsetcontrol-macostray.rb"
+  },
+  {
+    "cask": "toerings",
+    "repository": "ChrisLauinger77/toerings",
+    "asset_pattern": "^ToeRings_[0-9]+\\.[0-9]+\\.[0-9]+_universal\\.app\\.zip$",
+    "cask_file": "Casks/toerings.rb"
+  }
+]

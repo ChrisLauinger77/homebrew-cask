@@ -1,0 +1,55 @@
+name: Update casks
+
+on:
+  repository_dispatch:
+    types: [update-cask]
+  workflow_dispatch:
+    inputs:
+      cask:
+        description: "Cask to update, or all"
+        required: true
+        default: "all"
+        type: string
+  schedule:
+    - cron: "17 4 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-homebrew-casks
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: macos-15
+    env:
+      REQUESTED_CASK: ${{ github.event.client_payload.cask || inputs.cask || 'all' }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout tap
+        uses: actions/checkout@v7
+
+      - name: Update casks
+        run: python3 scripts/update_casks.py --cask "$REQUESTED_CASK"
+
+      - name: Validate changed casks
+        run: |
+          ruby -c Casks/headsetcontrol-macostray.rb
+          ruby -c Casks/toerings.rb
+          brew style Casks/headsetcontrol-macostray.rb Casks/toerings.rb
+
+      - name: Create update pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: automation/update-casks
+          delete-branch: true
+          commit-message: "Update Homebrew casks"
+          title: "Update Homebrew casks"
+          body: |
+            Automated update from the latest published GitHub releases.
+
+            The workflow verified the cask syntax and Homebrew style before opening this pull request.
