@@ -18,7 +18,7 @@ cask "headsetcontrol-macostray" do
   app "HeadsetControl-MacOSTray.app"
 
   caveats <<~EOS
-    #{token} is not signed. You may need to allow it in System Settings > Privacy & Security
-    or by right-clicking the app in Finder and choosing 'Open'.
+    #{token} is ad-hoc signed but not notarized. On first launch, Control-click the app
+    in Finder, choose 'Open', and confirm the security dialog.
   EOS
 end
