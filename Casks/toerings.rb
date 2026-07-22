@@ -1,6 +1,6 @@
 cask "toerings" do
-  version "0.3.3"
-  sha256 "9276a5a92a159b9f8b973e02f7eea85265f625f88aee4c258e6f98358016f3c6"
+  version "0.4.0"
+  sha256 "fe1bc03d79e59a8adda1d2661d71507cc9f91992988ab5bc345bcd375b3d3e6c"
 
   url "https://github.com/ChrisLauinger77/toerings/releases/download/v#{version}/ToeRings_#{version}_universal.app.zip"
   name "ToeRings"
