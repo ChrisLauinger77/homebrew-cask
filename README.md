@@ -13,7 +13,13 @@ This repository is a personal [Homebrew](https://brew.sh/) tap for macOS package
 
 ```sh
 brew tap ChrisLauinger77/cask
+brew tap sapd/headsetcontrol
+brew trust --formula sapd/headsetcontrol/headsetcontrol
 ```
+
+[Homebrew 6 and later require explicit trust](https://docs.brew.sh/Tap-Trust)
+for non-official taps. The commands above trust only the HeadsetControl formula,
+not the entire external tap.
 
 ## Install HeadsetControl-MacOSTray
 
@@ -24,9 +30,11 @@ brew install --cask headsetcontrol-macostray
 The cask depends on the official `sapd/headsetcontrol/headsetcontrol` formula,
 which Homebrew installs automatically.
 
-You can also install directly without tapping first:
+You can also install directly without explicitly tapping this repository first:
 
 ```sh
+brew tap sapd/headsetcontrol
+brew trust --formula sapd/headsetcontrol/headsetcontrol
 brew install --cask ChrisLauinger77/cask/headsetcontrol-macostray
 ```
 
