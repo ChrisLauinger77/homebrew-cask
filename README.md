@@ -8,13 +8,18 @@ This repository is a personal [Homebrew](https://brew.sh/) tap for macOS package
 | --- | --- | --- |
 | [headsetcontrol-macostray](https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray) | Cask | Tray utility for controlling headsets through the sapd headsetcontrol binary. |
 | [toerings](https://github.com/ChrisLauinger77/toerings) | Cask | Themeable desktop system monitor. |
-| [headsetcontrol-latest](https://github.com/Sapd/headsetcontrol) | Formula | Latest HEAD build of headsetcontrol, used by HeadsetControl-MacOSTray. |
 
 ## Add This Tap
 
 ```sh
 brew tap ChrisLauinger77/cask
+brew tap sapd/headsetcontrol
+brew trust --formula sapd/headsetcontrol/headsetcontrol
 ```
+
+[Homebrew 6 and later require explicit trust](https://docs.brew.sh/Tap-Trust)
+for non-official taps. The commands above trust only the HeadsetControl formula,
+not the entire external tap.
 
 ## Install HeadsetControl-MacOSTray
 
@@ -22,18 +27,15 @@ brew tap ChrisLauinger77/cask
 brew install --cask headsetcontrol-macostray
 ```
 
-The cask depends on `headsetcontrol-latest`, which Homebrew installs automatically from this tap.
+The cask depends on the official `sapd/headsetcontrol/headsetcontrol` formula,
+which Homebrew installs automatically.
 
-You can also install directly without tapping first:
+You can also install directly without explicitly tapping this repository first:
 
 ```sh
+brew tap sapd/headsetcontrol
+brew trust --formula sapd/headsetcontrol/headsetcontrol
 brew install --cask ChrisLauinger77/cask/headsetcontrol-macostray
-```
-
-## Install Only headsetcontrol-latest
-
-```sh
-brew install ChrisLauinger77/cask/headsetcontrol-latest
 ```
 
 ## Install ToeRings
