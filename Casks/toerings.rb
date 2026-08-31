@@ -16,8 +16,16 @@ cask "toerings" do
 
   app "ToeRings.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/ToeRings.app"]
+  end
+
   caveats <<~EOS
-    #{token} is ad-hoc signed but not notarized. On first launch, Control-click the app
-    in Finder, choose 'Open', and confirm the security dialog.
+    The Gatekeeper quarantine flag is cleared automatically after install
+    (ToeRings is open source but not yet notarized with Apple). If macOS
+    still reports the app as damaged, run:
+
+      xattr -cr /Applications/ToeRings.app
   EOS
 end
