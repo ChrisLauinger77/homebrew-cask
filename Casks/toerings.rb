@@ -16,7 +16,7 @@ cask "toerings" do
 
   app "ToeRings.app"
 
-  postflight do
+  postflight_steps do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/ToeRings.app"]
   end

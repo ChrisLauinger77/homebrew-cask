@@ -17,7 +17,7 @@ cask "headsetcontrol-macostray" do
 
   app "HeadsetControl-MacOSTray.app"
 
-  postflight do
+  postflight_steps do
     system_command "/usr/bin/xattr",
                    args: ["-cr", "#{appdir}/HeadsetControl-MacOSTray.app"]
   end
