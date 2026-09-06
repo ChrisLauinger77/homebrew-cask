@@ -1,6 +1,6 @@
 cask "headsetcontrol-macostray" do
-  version "3.0.2"
-  sha256 "2beaaba97edc98870fef52e4953dd2b96521bd87c7abdec5b00ea9c6dcede369"
+  version "3.1.0"
+  sha256 "6464b78f5c767640c4ceb43c60bb12b61532744e40f63af15a9c5e2ede63c319"
 
   url "https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray/releases/download/v#{version}/HeadsetControl-MacOSTray.zip"
   name "HeadsetControl-MacOSTray"
@@ -13,7 +13,6 @@ cask "headsetcontrol-macostray" do
   end
 
   depends_on macos: :sonoma
-  depends_on formula: "sapd/headsetcontrol/headsetcontrol"
 
   app "HeadsetControl-MacOSTray.app"
 
