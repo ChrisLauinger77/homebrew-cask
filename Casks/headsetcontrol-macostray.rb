@@ -13,7 +13,6 @@ cask "headsetcontrol-macostray" do
   end
 
   depends_on macos: :sonoma
-  depends_on formula: "sapd/headsetcontrol/headsetcontrol"
 
   app "HeadsetControl-MacOSTray.app"
 
