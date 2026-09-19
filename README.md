@@ -27,14 +27,9 @@ not the entire external tap.
 brew install --cask headsetcontrol-macostray
 ```
 
-The cask depends on the official `sapd/headsetcontrol/headsetcontrol` formula,
-which Homebrew installs automatically.
-
 You can also install directly without explicitly tapping this repository first:
 
 ```sh
-brew tap sapd/headsetcontrol
-brew trust --formula sapd/headsetcontrol/headsetcontrol
 brew install --cask ChrisLauinger77/cask/headsetcontrol-macostray
 ```
 
