@@ -6,6 +6,12 @@
     "cask_file": "Casks/headsetcontrol-macostray.rb"
   },
   {
+    "cask": "stream-gui-rs",
+    "repository": "ChrisLauinger77/stream-gui-rs",
+    "asset_pattern": "^Stream-GUI-RS_[0-9]+\\.[0-9]+\\.[0-9]+_macos_universal\\.dmg$",
+    "cask_file": "Casks/stream-gui-rs.rb"
+  },
+  {
     "cask": "toerings",
     "repository": "ChrisLauinger77/toerings",
     "asset_pattern": "^ToeRings_[0-9]+\\.[0-9]+\\.[0-9]+_universal\\.app\\.zip$",

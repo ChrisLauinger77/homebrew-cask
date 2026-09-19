@@ -7,6 +7,7 @@ This repository is a personal [Homebrew](https://brew.sh/) tap for macOS package
 | Package | Type | Description |
 | --- | --- | --- |
 | [headsetcontrol-macostray](https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray) | Cask | Tray utility for controlling headsets through the sapd headsetcontrol binary. |
+| [stream-gui-rs](https://github.com/ChrisLauinger77/stream-gui-rs) | Cask | Browse Twitch and watch streams through Streamlink. |
 | [toerings](https://github.com/ChrisLauinger77/toerings) | Cask | Themeable desktop system monitor. |
 
 ## Add This Tap
@@ -50,6 +51,20 @@ You can also install directly without tapping first:
 brew install --cask ChrisLauinger77/cask/toerings
 ```
 
+## Install Stream GUI RS
+
+```sh
+brew install --cask stream-gui-rs
+```
+
+Streamlink 8.0 or newer and a compatible media player must be installed separately.
+
+You can also install directly without tapping first:
+
+```sh
+brew install --cask ChrisLauinger77/cask/stream-gui-rs
+```
+
 ## Update
 
 Update Homebrew and installed packages:
@@ -69,6 +84,12 @@ Upgrade only ToeRings:
 
 ```sh
 brew upgrade --cask toerings
+```
+
+Upgrade only Stream GUI RS:
+
+```sh
+brew upgrade --cask stream-gui-rs
 ```
 
 ## Automated Cask Updates

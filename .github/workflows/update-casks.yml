@@ -38,8 +38,9 @@ jobs:
       - name: Validate changed casks
         run: |
           ruby -c Casks/headsetcontrol-macostray.rb
+          ruby -c Casks/stream-gui-rs.rb
           ruby -c Casks/toerings.rb
-          brew style Casks/headsetcontrol-macostray.rb Casks/toerings.rb
+          brew style Casks/headsetcontrol-macostray.rb Casks/stream-gui-rs.rb Casks/toerings.rb
 
       - name: Create update pull request
         uses: peter-evans/create-pull-request@v8
