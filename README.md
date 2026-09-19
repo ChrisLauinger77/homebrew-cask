@@ -14,8 +14,7 @@ This repository is a personal [Homebrew](https://brew.sh/) tap for macOS package
 
 ```sh
 brew tap ChrisLauinger77/cask
-brew tap sapd/headsetcontrol
-brew trust --formula sapd/headsetcontrol/headsetcontrol
+brew trust ChrisLauinger77/cask
 ```
 
 [Homebrew 6 and later require explicit trust](https://docs.brew.sh/Tap-Trust)
