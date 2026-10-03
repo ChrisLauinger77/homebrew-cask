@@ -90,8 +90,8 @@ brew upgrade --cask stream-gui-rs
 
 The casks are updated by one central GitHub Actions workflow. Publishing a supported app
 release triggers a targeted check, and a daily scheduled run checks every configured cask
-as a fallback. Updates are proposed as pull requests after the cask syntax and Homebrew
-style have been validated.
+as a fallback. Updates are committed and pushed directly to `main` after the cask syntax
+and Homebrew style have been validated. Checks with no changes do not create a commit.
 
 ## macOS Security Notice
 

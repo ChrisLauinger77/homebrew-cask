@@ -15,7 +15,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 concurrency:
   group: update-homebrew-casks
@@ -31,6 +30,8 @@ jobs:
     steps:
       - name: Checkout tap
         uses: actions/checkout@v7
+        with:
+          ref: main
 
       - name: Update casks
         run: python3 scripts/update_casks.py --cask "$REQUESTED_CASK"
@@ -42,15 +43,15 @@ jobs:
           ruby -c Casks/toerings.rb
           brew style Casks/headsetcontrol-macostray.rb Casks/stream-gui-rs.rb Casks/toerings.rb
 
-      - name: Create update pull request
-        uses: peter-evans/create-pull-request@v8
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: automation/update-casks
-          delete-branch: true
-          commit-message: "Update Homebrew casks"
-          title: "Update Homebrew casks"
-          body: |
-            Automated update from the latest published GitHub releases.
+      - name: Commit and push cask updates
+        run: |
+          git add -- Casks/*.rb
+          if git diff --cached --quiet; then
+            echo "Casks are already up to date; nothing to commit."
+            exit 0
+          fi
 
-            The workflow verified the cask syntax and Homebrew style before opening this pull request.
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: update homebrew casks"
+          git push origin HEAD:main
