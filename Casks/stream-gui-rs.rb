@@ -1,6 +1,6 @@
 cask "stream-gui-rs" do
-  version "1.5.1"
-  sha256 "1e361e8fe4521630431559b272b5f105c7c381d0129c7381dd5e5a5e602b7fc8"
+  version "1.5.2"
+  sha256 "08aa45279863a5bee4ef5b1690e9476bd3bef61149334d5e9723c1081f51a77c"
 
   url "https://github.com/ChrisLauinger77/stream-gui-rs/releases/download/v#{version}/Stream-GUI-RS_#{version}_macos_universal.dmg"
   name "Stream GUI RS"
