@@ -6,6 +6,7 @@ This repository is a personal [Homebrew](https://brew.sh/) tap for macOS package
 
 | Package | Type | Description |
 | --- | --- | --- |
+| [code-convoy](https://github.com/ChrisLauinger77/code-convoy) | Cask | Run one task across multiple repositories with the coding agent of your choice. |
 | [headsetcontrol-macostray](https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray) | Cask | Tray utility for controlling headsets through the sapd headsetcontrol binary. |
 | [stream-gui-rs](https://github.com/ChrisLauinger77/stream-gui-rs) | Cask | Browse Twitch and watch streams through Streamlink. |
 | [toerings](https://github.com/ChrisLauinger77/toerings) | Cask | Themeable desktop system monitor. |
@@ -20,6 +21,20 @@ brew trust ChrisLauinger77/cask
 [Homebrew 6 and later require explicit trust](https://docs.brew.sh/Tap-Trust)
 for non-official taps. The commands above trust only the HeadsetControl formula,
 not the entire external tap.
+
+## Install CodeConvoy
+
+```sh
+brew install --cask code-convoy
+```
+
+Git and your chosen coding-agent CLI must be installed separately.
+
+You can also install directly without tapping first:
+
+```sh
+brew install --cask ChrisLauinger77/cask/code-convoy
+```
 
 ## Install HeadsetControl-MacOSTray
 
@@ -66,6 +81,12 @@ Update Homebrew and installed packages:
 ```sh
 brew update
 brew upgrade
+```
+
+Upgrade only CodeConvoy:
+
+```sh
+brew upgrade --cask code-convoy
 ```
 
 Upgrade only HeadsetControl-MacOSTray:

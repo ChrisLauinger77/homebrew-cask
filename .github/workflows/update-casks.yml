@@ -38,10 +38,11 @@ jobs:
 
       - name: Validate changed casks
         run: |
+          ruby -c Casks/code-convoy.rb
           ruby -c Casks/headsetcontrol-macostray.rb
           ruby -c Casks/stream-gui-rs.rb
           ruby -c Casks/toerings.rb
-          brew style Casks/headsetcontrol-macostray.rb Casks/stream-gui-rs.rb Casks/toerings.rb
+          brew style Casks/code-convoy.rb Casks/headsetcontrol-macostray.rb Casks/stream-gui-rs.rb Casks/toerings.rb
 
       - name: Commit and push cask updates
         run: |
