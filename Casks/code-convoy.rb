@@ -1,6 +1,6 @@
 cask "code-convoy" do
-  version "0.4.0"
-  sha256 "55565beffced67bfeb254965fc4cc6cc6d5ba6414e6390c6d878c982967ae687"
+  version "0.5.0"
+  sha256 "5e7a80af737a287a3ef96bb1b258ef2ace11c5fe745906e7000264ac41c46dca"
 
   url "https://github.com/ChrisLauinger77/code-convoy/releases/download/v#{version}/CodeConvoy-#{version}-macos-universal.dmg"
   name "CodeConvoy"
