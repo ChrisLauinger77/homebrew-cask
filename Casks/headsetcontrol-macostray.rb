@@ -1,6 +1,6 @@
 cask "headsetcontrol-macostray" do
-  version "3.2.2"
-  sha256 "fc9a9658a5ff6e05295be8526ce532ba8546f26facd5a6bd52d486fbb4c993d9"
+  version "3.2.3"
+  sha256 "7bde9bd88b1b542f979224bf5d17cf665e571e39c325407d899ebf40044ad6d4"
 
   url "https://github.com/ChrisLauinger77/HeadsetControl-MacOSTray/releases/download/v#{version}/HeadsetControl-MacOSTray.zip"
   name "HeadsetControl-MacOSTray"
