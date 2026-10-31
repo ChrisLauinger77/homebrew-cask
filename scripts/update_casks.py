@@ -6,11 +6,16 @@ import json
 import os
 from pathlib import Path
 import re
+import sys
+import time
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_FILE = ROOT / "config" / "casks.json"
+ATTEMPTS = 4
+RETRY_STATUSES = {429, 500, 502, 503, 504}
 
 
 def request(url: str):
@@ -22,7 +27,17 @@ def request(url: str):
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
-    return urlopen(Request(url, headers=headers), timeout=60)
+    for attempt in range(1, ATTEMPTS + 1):
+        try:
+            return urlopen(Request(url, headers=headers), timeout=60)
+        except (URLError, TimeoutError) as error:
+            if isinstance(error, HTTPError) and error.code not in RETRY_STATUSES:
+                raise
+            if attempt == ATTEMPTS:
+                raise
+            delay = 5 * 2 ** (attempt - 1)
+            print(f"{url}: {error}; retrying in {delay}s", file=sys.stderr)
+            time.sleep(delay)
 
 
 def latest_release(repository: str) -> dict:
@@ -30,9 +45,14 @@ def latest_release(repository: str) -> dict:
         return json.load(response)
 
 
-def asset_sha256(url: str) -> str:
+def asset_sha256(asset: dict) -> str:
+    # GitHub publishes a digest for release assets; only download when it is missing
+    published = asset.get("digest") or ""
+    if published.startswith("sha256:"):
+        return published.removeprefix("sha256:")
+
     digest = hashlib.sha256()
-    with request(url) as response:
+    with request(asset["browser_download_url"]) as response:
         while chunk := response.read(1024 * 1024):
             digest.update(chunk)
     return digest.hexdigest()
@@ -54,7 +74,7 @@ def update_cask(entry: dict) -> bool:
         )
 
     version = tag[1:]
-    sha256 = asset_sha256(assets[0]["browser_download_url"])
+    sha256 = asset_sha256(assets[0])
     cask_path = ROOT / entry["cask_file"]
     content = cask_path.read_text()
     updated, version_count = re.subn(
